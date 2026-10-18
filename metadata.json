@@ -1,0 +1,8 @@
+{
+  "name": "Remix Vibing Peer - Medical Study Partner Match",
+  "description": "Find opposite-gender medical study partners on Vibing Peer based on target exams, NEET SS PG branches, and academic interests.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

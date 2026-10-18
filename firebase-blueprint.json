@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VibingPeerFirebaseBlueprint",
+  "description": "Firestore schema blueprint for Vibing Peer medical study partner application",
+  "entities": {
+    "users": {
+      "title": "User Profile",
+      "description": "Medical student profiles with target exam, NEET SS PG branch, and study preferences",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "gender": { "type": "string" },
+        "targetPgBranch": { "type": "string" },
+        "academicInterests": { "type": "array", "items": { "type": "string" } },
+        "targetExam": { "type": "string" },
+        "targetYear": { "type": "number" },
+        "college": { "type": "string" },
+        "bio": { "type": "string" },
+        "avatarUrl": { "type": "string" },
+        "verifiedStudent": { "type": "boolean" }
+      },
+      "required": ["id", "name", "gender", "targetPgBranch", "targetExam"]
+    },
+    "notifications": {
+      "title": "In-App Notification",
+      "description": "Alerts for study requests, syllabus milestone additions, and messages",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "fromUserId": { "type": "string" },
+        "fromUserName": { "type": "string" },
+        "type": { "type": "string" },
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "read": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "type", "title", "message"]
+    },
+    "messages": {
+      "title": "Chat Messages",
+      "description": "Real-time messages between matched study partners including YouTube video lectures",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "conversationId": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "text": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "youtubeUrl": { "type": "string" },
+        "youtubeVideoId": { "type": "string" }
+      },
+      "required": ["id", "conversationId", "senderId", "text"]
+    },
+    "milestones": {
+      "title": "Syllabus Milestone",
+      "description": "Shared medical syllabus milestones logged by study partners",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "subject": { "type": "string" },
+        "topicTitle": { "type": "string" },
+        "targetExam": { "type": "string" },
+        "completedBy": { "type": "string" },
+        "completed": { "type": "boolean" }
+      },
+      "required": ["id", "subject", "topicTitle", "targetExam"]
+    },
+    "studyStats": {
+      "title": "Study Stats & Leaderboard",
+      "description": "Gamified progress tracking for pomodoros, milestones, and MCQs",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "completedMilestones": { "type": "number" },
+        "completedPomodoros": { "type": "number" },
+        "solvedMcqs": { "type": "number" },
+        "xpPoints": { "type": "number" }
+      },
+      "required": ["id", "userId", "xpPoints"]
+    }
+  }
+}

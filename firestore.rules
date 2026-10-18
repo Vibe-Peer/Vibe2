@@ -1,0 +1,40 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper: check if authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Helper: check if user owns document
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Users collection rules: discovery reading for partner matching across multiple exam tracks, owner full access
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow create, update, delete: if isOwner(userId);
+    }
+
+    // Partnerships / multi-partner study relationships for various subjects, exams, and non-academic pursuits
+    match /partnerships/{partnershipId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    // Direct Messaging & chats between study partners
+    match /chats/{chatId} {
+      allow read, write: if isAuthenticated();
+      
+      match /messages/{messageId} {
+        allow read, write: if isAuthenticated();
+      }
+    }
+
+    // Study milestones & goal trackers
+    match /milestones/{milestoneId} {
+      allow read, write: if isAuthenticated();
+    }
+  }
+}
