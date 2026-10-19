@@ -188,17 +188,18 @@ export const ImageLab: React.FC<ImageLabProps> = ({
               <label className="flex items-center gap-1 text-xs text-emerald-400 hover:text-emerald-300 cursor-pointer">
                 <Upload className="w-3.5 h-3.5" />
                 <span>Upload Custom Image</span>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleFileUpload}
-                  className="hidden"
-                />
               </label>
             </div>
 
             {/* Preview Box */}
-            <div className="relative rounded-xl overflow-hidden bg-slate-950 border border-slate-800 aspect-square flex items-center justify-center group">
+            <label className="relative rounded-xl overflow-hidden bg-slate-950 border border-slate-800 aspect-square flex items-center justify-center group cursor-pointer">
+              <input
+                type="file"
+                accept="image/*"
+                capture="environment"
+                onChange={handleFileUpload}
+                className="hidden"
+              />
               <img
                 src={selectedImage}
                 alt="Clinical specimen"
@@ -206,10 +207,10 @@ export const ImageLab: React.FC<ImageLabProps> = ({
               />
               <div className="absolute inset-0 bg-slate-950/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center pointer-events-none">
                 <span className="text-xs bg-slate-900/90 text-slate-200 px-3 py-1 rounded-full border border-slate-700">
-                  High-Resolution Diagnostic Asset
+                  Upload / Capture Image
                 </span>
               </div>
-            </div>
+            </label>
 
             {/* Custom Question input */}
             <div className="mt-4 space-y-2">

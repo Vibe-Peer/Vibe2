@@ -233,8 +233,8 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* Core Features Grid */}
       <section className="relative z-10 py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full border-t border-[#1E293B]">
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <span className="text-xs font-bold text-[#22D3EE] uppercase tracking-wider">
-            Engineered For Medical High-Achievers
+          <span className="text-xs font-bold text-[#22D3EE] uppercase tracking-wider bg-black">
+            ENGINEERED FOR HIGH-ACHIEVERS
           </span>
           <h2 className="text-3xl font-extrabold text-[#F8FAFC] mt-2 tracking-tight">
             Everything You Need To Vibe &amp; Rank Top 1%
